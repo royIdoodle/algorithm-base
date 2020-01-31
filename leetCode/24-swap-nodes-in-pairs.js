@@ -11,10 +11,22 @@ const swapPairs = function(head) {
     return head;
   }
   
-  let root = head.next;
-  head.next = swapPairs(head.next.next);
-  root.next = head;
-  return root;
+  let tmp = new ListNode();
+  tmp.next = head;
+  
+  let current = tmp;
+  
+  while (current.next && current.next.next) {
+    let next1 = current.next;
+    let next2 = current.next.next;
+    let next3 = current.next.next.next;
+    current.next = next2;
+    next2.next = next1;
+    next1.next = next3;
+    current = next1;
+  }
+  
+  return tmp.next;
 };
 
 const newNode = swapPairs(node);
