@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="compiler.js"></script>
+  <script src="./rVue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h2 v-text="title"></h2>
+    <p>{{content}}</p>
+    <span>input</span><input type="text" v-model="desc">
+    <p><span>输入框的内容</span><span>{{desc}}</span></p>
+    <button @click="clickHandler">按钮</button>
+  </div>
+  <script>
+    new RVue({
+      el: '#app',
+      data: {
+        title: 'RVue demo',
+        content: 'some descriptions',
+        desc: 'input description'
+      },
+      created () {
+        setTimeout(() => {
+          console.log('created called')
+          this.title = 'new Title';
+          this.content = 'new content'
+        }, 500)
+      },
+      methods: {
+        clickHandler () {
+          this.content = 'button clicked'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

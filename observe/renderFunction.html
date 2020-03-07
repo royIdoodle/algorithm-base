@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <example :tags="['h1', 'h2', 'h3']"></example>
+  </div>
+
+  <script>
+    Vue.component('example', {
+      render: function (h) {
+        return h('div', this.$props.tags.map((prop, index) => h(prop, index)))
+      },
+      props: {
+        tags: {
+          type: Array,
+          default: () => []
+        }
+      }
+    })
+
+
+    new Vue({el: '#app'})
+    @some
+    function f () {
+
+    }
+    
+    function some () {
+  
+    }
+  </script>
+</body>
+</html>
